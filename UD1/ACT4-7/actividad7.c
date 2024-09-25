@@ -4,6 +4,11 @@
 #include <sched.h>
 #include <sys/wait.h>
 
+/*
+Proceso que suma o resta 5 dependiendo de si es hijo o padre
+Hijo resta 5
+Padre suma 5
+*/
 int main()
 {
     pid_t pid;

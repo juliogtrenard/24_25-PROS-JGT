@@ -4,6 +4,11 @@
 #include <sched.h>
 #include <sys/wait.h>
 
+/*
+Estructura de padre, hijos y nieto
+Dos hijos de un proceso padre
+Proceso nieto hijo de uno de los procesos hijo
+*/
 int main()
 {
     int pid, pid1, pid2;
