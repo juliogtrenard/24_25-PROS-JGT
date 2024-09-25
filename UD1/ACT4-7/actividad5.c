@@ -8,6 +8,7 @@ Funcion recursiva para crear n hijos
 cantProcesos indica la cantidad de hijos a crear
 numHijo indica qué hijo es, ejemplo Hijo 1, Hijo 2, etc
 */
+
 void crearHijo(int cantProcesos, int numHijo) {
     if (numHijo > cantProcesos) {
         exit(0);
