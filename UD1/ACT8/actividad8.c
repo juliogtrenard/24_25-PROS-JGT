@@ -37,11 +37,11 @@ int main() {
 
         //Leer mensaje del abuelo
         read(pipe1[0], buffer, TAMANIO);
-        printf("    El hijo recibe mensaje del abuelo: %s\n", buffer);
+        printf("    El HIJO recibe mensaje de abuelo: %s\n", buffer);
 
         //Enviar mensaje al nieto
-        const char *mensaje_hijo = "Saludo del padre.";
-        printf("    El hijo envía un mensaje al nieto...\n");
+        const char *mensaje_hijo = "Saludo del padre...";
+        printf("    El HIJO envía un mensaje al NIETO...\n");
 
         //Crear el proceso nieto
         pid_nieto = fork();
@@ -56,11 +56,11 @@ int main() {
 
             //Recibir mensaje del padre
             read(pipe1[0], buffer, TAMANIO);
-            printf("        El nieto recibe mensaje del padre: %s\n", buffer);
+            printf("        El NIETO recibe mensaje del padre: %s\n", buffer);
 
             //Enviar mensaje al hijo
-            const char *mensaje_nieto = "Saludo del nieto.";
-            printf("        El nieto envía un mensaje al hijo...\n");
+            const char *mensaje_nieto = "Saludo del nieto...";
+            printf("        El NIETO envía un mensaje al HIJO...\n");
             write(pipe2[1], mensaje_nieto, strlen(mensaje_nieto));
             exit(0);
         } else {
@@ -69,11 +69,11 @@ int main() {
 
             //Leer mensaje del nieto
             read(pipe2[0], buffer, TAMANIO);
-            printf("    El hijo recibe mensaje de su hijo: %s\n", buffer);
+            printf("    El HIJO recibe mensaje de su hijo: %s\n", buffer);
 
             //Enviar mensaje al abuelo
-            const char *mensaje_hijo_final = "Saludo del hijo.";
-            printf("    El hijo envía un mensaje al abuelo...\n");
+            const char *mensaje_hijo_final = "Saludo del hijo...";
+            printf("    El HIJO envía un mensaje al ABUELO...\n");
             write(pipe2[1], mensaje_hijo_final, strlen(mensaje_hijo_final));
         }
 
@@ -83,15 +83,15 @@ int main() {
         close(pipe2[1]); //Cierro escritura de pipe2
 
         //Enviar mensaje al hijo
-        const char *mensaje_abuelo = "Saludo del abuelo.";
-        printf("El abuelo envía un mensaje al hijo...\n");
+        const char *mensaje_abuelo = "Saludo del abuelo...";
+        printf("El ABUELO envía un mensaje al HIJO...\n");
         write(pipe1[1], mensaje_abuelo, strlen(mensaje_abuelo));
 
         wait(NULL); //Esperar al hijo
 
         //Leer mensaje del hijo
         read(pipe2[0], buffer, TAMANIO);
-        printf("El abuelo recibe mensaje del hijo: %s\n", buffer);
+        printf("El ABUELO recibe mensaje del HIJO: %s\n", buffer);
     }
 
     exit(0);
