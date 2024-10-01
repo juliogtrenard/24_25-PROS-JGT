@@ -40,7 +40,7 @@ int main() {
         printf("    El HIJO recibe mensaje de abuelo: %s\n", buffer);
 
         //Enviar mensaje al nieto
-        const char *mensaje_hijo = "Saludo del padre...";
+        char mensaje_hijo[] = "Saludo del padre...";
         printf("    El HIJO envía un mensaje al NIETO...\n");
 
         //Crear el proceso nieto
@@ -59,7 +59,7 @@ int main() {
             printf("        El NIETO recibe mensaje del padre: %s\n", buffer);
 
             //Enviar mensaje al hijo
-            const char *mensaje_nieto = "Saludo del nieto...";
+            char mensaje_nieto[] = "Saludo del nieto...";
             printf("        El NIETO envía un mensaje al HIJO...\n");
             write(pipe2[1], mensaje_nieto, strlen(mensaje_nieto));
             exit(0);
@@ -72,7 +72,7 @@ int main() {
             printf("    El HIJO recibe mensaje de su hijo: %s\n", buffer);
 
             //Enviar mensaje al abuelo
-            const char *mensaje_hijo_final = "Saludo del hijo...";
+            char mensaje_hijo_final[] = "Saludo del hijo...";
             printf("    El HIJO envía un mensaje al ABUELO...\n");
             write(pipe2[1], mensaje_hijo_final, strlen(mensaje_hijo_final));
         }
@@ -83,7 +83,7 @@ int main() {
         close(pipe2[1]); //Cierro escritura de pipe2
 
         //Enviar mensaje al hijo
-        const char *mensaje_abuelo = "Saludo del abuelo...";
+        char mensaje_abuelo[] = "Saludo del abuelo...";
         printf("El ABUELO envía un mensaje al HIJO...\n");
         write(pipe1[1], mensaje_abuelo, strlen(mensaje_abuelo));
 
