@@ -32,8 +32,8 @@ int main() {
     }
 
     if (pid_hijo == 0) { //Proceso hijo
-        close(pipe1[1]); //Cierro escritura de pipe1
-        close(pipe2[0]); //Cierro lectura de pipe2
+        //close(pipe1[1]); //Cierro escritura de pipe1
+        //close(pipe2[0]); //Cierro lectura de pipe2
 
         //Leer mensaje del abuelo
         read(pipe1[0], buffer, TAMANIO);
@@ -42,6 +42,7 @@ int main() {
         //Enviar mensaje al nieto
         char mensaje_hijo[] = "Saludo del padre...";
         printf("    El HIJO envía un mensaje al NIETO...\n");
+        write(pipe2[1], mensaje_hijo, strlen(mensaje_hijo));
 
         //Crear el proceso nieto
         pid_nieto = fork();
@@ -51,24 +52,24 @@ int main() {
         }
 
         if (pid_nieto == 0) { //Proceso nieto
-            close(pipe1[0]); //Cierro lectura de pipe1
-            close(pipe2[1]); //Cierro escritura de pipe2
+            //close(pipe1[0]); //Cierro lectura de pipe1
+            //close(pipe2[1]); //Cierro escritura de pipe2
 
             //Recibir mensaje del padre
-            read(pipe1[0], buffer, TAMANIO);
+            read(pipe2[0], buffer, TAMANIO);
             printf("        El NIETO recibe mensaje del padre: %s\n", buffer);
 
             //Enviar mensaje al hijo
             char mensaje_nieto[] = "Saludo del nieto...";
             printf("        El NIETO envía un mensaje al HIJO...\n");
-            write(pipe2[1], mensaje_nieto, strlen(mensaje_nieto));
+            write(pipe1[1], mensaje_nieto, strlen(mensaje_nieto));
             exit(0);
         } else {
             //Esperar al nieto
             wait(NULL);
 
             //Leer mensaje del nieto
-            read(pipe2[0], buffer, TAMANIO);
+            read(pipe1[0], buffer, TAMANIO);
             printf("    El HIJO recibe mensaje de su hijo: %s\n", buffer);
 
             //Enviar mensaje al abuelo
@@ -79,8 +80,8 @@ int main() {
 
         exit(0);
     } else { //Proceso abuelo
-        close(pipe1[0]); //Cierro lectura de pipe1
-        close(pipe2[1]); //Cierro escritura de pipe2
+        //close(pipe1[0]); //Cierro lectura de pipe1
+        //close(pipe2[1]); //Cierro escritura de pipe2
 
         //Enviar mensaje al hijo
         char mensaje_abuelo[] = "Saludo del abuelo...";
