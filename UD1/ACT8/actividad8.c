@@ -5,6 +5,13 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+/*
+Programa en C donde los procesos abuelo, hijo y nieto se envían mensajes 
+de la siguiente manera:
+abuelo -> hijo -> nieto
+nieto -> hijo -> abuelo
+*/
+
 #define TAMANIO 50
 
 int main() {
@@ -32,8 +39,6 @@ int main() {
     }
 
     if (pid_hijo == 0) { //Proceso hijo
-        //close(pipe1[1]); //Cierro escritura de pipe1
-        //close(pipe2[0]); //Cierro lectura de pipe2
 
         //Leer mensaje del abuelo
         read(pipe1[0], buffer, TAMANIO);
@@ -52,8 +57,6 @@ int main() {
         }
 
         if (pid_nieto == 0) { //Proceso nieto
-            //close(pipe1[0]); //Cierro lectura de pipe1
-            //close(pipe2[1]); //Cierro escritura de pipe2
 
             //Recibir mensaje del padre
             read(pipe2[0], buffer, TAMANIO);
@@ -80,8 +83,6 @@ int main() {
 
         exit(0);
     } else { //Proceso abuelo
-        //close(pipe1[0]); //Cierro lectura de pipe1
-        //close(pipe2[1]); //Cierro escritura de pipe2
 
         //Enviar mensaje al hijo
         char mensaje_abuelo[] = "Saludo del abuelo...";
