@@ -8,6 +8,9 @@ void manejador(int signal) {
     printf("Padre recibe señal... %d\n", signal);
 }
 
+/*
+Realiza un programa C en donde un hijo envíe 3 señales SIGUSR1 a su padre y después envíe una señal SIGKILL para que el proceso padre termine.
+*/
 int main() { 
     int pid_hijo;
     pid_hijo = fork(); //Creamos el hijo
