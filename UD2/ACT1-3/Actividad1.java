@@ -2,18 +2,10 @@ package actividadeshilos;
 
 public class Actividad1 {
 	public static void main(String[] args) {
-		Hilos h = new Hilos();
-		
-		new Thread(new Runnable() {
-		    public void run() {
-		        h.primero();
-		    }
-		}).start();
-		
-	    new Thread(new Runnable() {
-	        public void run() {
-	            h.segundo();
-	        }
-	    }).start();
+		Hilos hilo1 = new Hilos("Primero ");
+        Hilos hilo2 = new Hilos("Segundo ");
+
+        hilo1.start();
+        hilo2.start();
 	}
 }
