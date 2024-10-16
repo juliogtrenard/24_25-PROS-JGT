@@ -1,3 +1,6 @@
+/*
+ * Clase que se usa para crear el hilo y muestra un mensaje 15 veces, después de cada mensaje espera 100 ms
+ */
 class Primero extends Thread { 
     public void run() {
         for (int i = 1; i <= 15; i++) {

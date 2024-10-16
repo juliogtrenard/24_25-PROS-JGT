@@ -1,3 +1,6 @@
+/*
+ * Clase que crea y ejecuta dos hilos simultáneamente, cada uno con un mensaje diferente
+ */
 public class Actividad4 {
 
 	public static void main(String[] args) {
