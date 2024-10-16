@@ -1,3 +1,6 @@
+/*
+ * Programa que crea un hilo, saca su información incial (Nombre y prioridad) y luego la cambia
+ */
 public class Actividad3 {
     public static void main(String[] args) {
         Thread hilo = new Thread();

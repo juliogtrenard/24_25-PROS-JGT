@@ -1,3 +1,7 @@
+/*
+ * Programa que crea n Hilos (Pasados por argumentos) e imprime 20 veces el mensaje "Hilo n"
+ * n es el número del hilo
+ */
 public class Actividad2 extends Thread {
 	private final int hiloNumero;
 
