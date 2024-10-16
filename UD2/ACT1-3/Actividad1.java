@@ -2,8 +2,8 @@ package actividadeshilos;
 
 public class Actividad1 {
 	public static void main(String[] args) {
-		Hilos hilo1 = new Hilos("Primero ");
-        Hilos hilo2 = new Hilos("Segundo ");
+		Hilo hilo1 = new Hilo("Primero ");
+        Hilo hilo2 = new Hilo("Segundo ");
 
         hilo1.start();
         hilo2.start();

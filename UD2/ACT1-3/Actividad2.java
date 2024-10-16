@@ -1,6 +1,18 @@
 package actividadeshilos;
 
-public class Actividad2 {
+public class Actividad2 extends Thread {
+	private final int hiloNumero;
+
+	public Actividad2(int hiloNumero) {
+		this.hiloNumero = hiloNumero;
+	}
+
+	@Override
+	public void run() {
+		for (int j = 0; j < 20; j++) {
+			System.out.println("Hilo " + hiloNumero);
+		}
+	}
 
 	public static void main(String[] args) {
 		int n = Integer.parseInt(args[0]);
@@ -13,5 +25,4 @@ public class Actividad2 {
         
         System.out.println("Final programa");
 	}
-
 }

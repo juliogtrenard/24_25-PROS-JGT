@@ -1,9 +1,9 @@
 package actividadeshilos;
 
-public class Hilos extends Thread {
+public class Hilo extends Thread {
 	private final String mensaje;
 
-    public Hilos(String mensaje) {
+    public Hilo(String mensaje) {
         this.mensaje = mensaje;
     }
 
