@@ -1,5 +1,3 @@
-package actividadeshilos;
-
 public class Actividad2 extends Thread {
 	private final int hiloNumero;
 

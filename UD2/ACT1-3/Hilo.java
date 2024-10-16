@@ -1,5 +1,3 @@
-package actividadeshilos;
-
 public class Hilo extends Thread {
 	private final String mensaje;
 
