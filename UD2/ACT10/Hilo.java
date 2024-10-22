@@ -1,3 +1,6 @@
+/*
+ * Clase que extiende de Thread donde se crean los hilos y se muestra el mensaje
+ */
 public class Hilo extends Thread {
     private String mensaje;
 

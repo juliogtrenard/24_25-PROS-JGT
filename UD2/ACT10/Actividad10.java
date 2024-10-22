@@ -1,3 +1,6 @@
+/*
+ * Programa en Java que saca por consola información relativa a la prioridad del hilo principal y de otros dos hilos.
+ */
 public class Actividad10 {
     public static void main(String[] args) {
         //Creamos los hilos
