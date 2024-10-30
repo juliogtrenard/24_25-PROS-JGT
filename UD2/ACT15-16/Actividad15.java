@@ -6,7 +6,7 @@ import java.util.Date;
  */
 class Hilo extends Thread {
     /**
-     * Nombre del hilo
+     * Nombre del hilo.
      */
     private String nombre;
 
