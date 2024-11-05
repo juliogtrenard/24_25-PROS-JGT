@@ -3,28 +3,39 @@
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 /*
-Programa con el FIFO que escribe
-*/
+ * Envia los datos
+ */
 int main(void)
 {
     int fp;
-    char saludo[] = "Un saludo !!!!!\n";
-    
-    //Abrir el FIFO en modo escritura
-    fp = open("FIFO2", O_WRONLY); //El parámetro O_WRONLY significa que es solo escritura
+    char saludo[] = "Un saludo...\n";
 
-    //En caso de error al abrir el FIFO
-    if (fp == -1) {
-        printf("Error al abrir el fichero... \n");
+    // Se crea el FIFO
+    if (mknod("FIFO2", 0100000 | 0666, 0) == -1) {
+        perror("Error al crear FIFO");
         exit(1);
     }
 
-    //Escribir en el FIFO y cerrarlo
-    printf("Mandando información al FIFO...\n");
-    write(fp, saludo, strlen(saludo)); 
-    close(fp);
+    // Se abre el FIFO para escribir
+    fp = open("FIFO2", O_WRONLY);  // Permiso solo de escritura
+    if (fp == -1) {
+        perror("Error al abrir FIFO para escritura");
+        exit(1);
+    }
 
-    return(0);
+    printf("Mandando información al FIFO...\n");
+
+    // Escribimos el mensaje en el FIFO
+    if (write(fp, saludo, strlen(saludo)) == -1) {
+        perror("Error al escribir en FIFO");
+        close(fp);
+        exit(1);
+    }
+
+    close(fp);
+    return 0;
 }

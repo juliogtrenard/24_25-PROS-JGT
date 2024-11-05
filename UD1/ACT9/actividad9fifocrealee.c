@@ -6,40 +6,37 @@
 #include <unistd.h>
 
 /*
-Programa que crea un FIFO y lee la información que manda fifoescribe.c
-*/
+ * Lee los datos
+ */
 int main(void)
 {
-    int fp;
-    int p;
-    char buffer[50]; //El tamaño anterior era muy pequeño, lo aumentamos
+    int fp, bytesleidos;
+    char buffer[10];
 
-    //Crear el FIFO
-    p = mkfifo("FIFO2", 0666); //Cambio el mknod ya que buscando en internet leí que está más estandarizado usar mkfifo para crear fifos
-
-    if (p == -1) {
-        printf("Ha ocurrido un error.... \n");
+    // Se abre el FIFO para leer
+    fp = open("FIFO2", O_RDONLY);  // Permiso solo de lectura
+    if (fp == -1) {
+        perror("Error al abrir FIFO");
         exit(1);
     }
 
+    printf("Obteniendo información...");
+
+    // Se leen los datos que llegan al FIFO
     while (1) {
-        //Abrir el FIFO en modo lectura
-        fp = open("FIFO2", O_RDONLY); //El parámetro O_RDONLY significa que es solo lectura
-
-        if (fp == -1) {
-            printf("Error al abrir el FIFO");
-            exit(1);
-        }
-
-        //Leer FIFO
-        printf("Obteniendo información...\n");
-
-        while (read(fp, buffer, sizeof(buffer)) > 0) {
+        bytesleidos = read(fp, buffer, sizeof(buffer) - 1);  // Se leen los bytes
+        if (bytesleidos > 0) {
+            buffer[bytesleidos] = '\0';  // Asegurar que sea cadena de texto
             printf("%s", buffer);
+        } else if (bytesleidos == 0) {
+            // Cuando no haya mas datos se cierra
+            break;
+        } else {
+            perror("Error al leer del FIFO");
+            break;
         }
-        
-        close(fp);
     }
 
-    return(0);
+    close(fp);
+    return 0;
 }
