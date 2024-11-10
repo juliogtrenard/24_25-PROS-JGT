@@ -7,7 +7,7 @@ public class Actividad11 {
     public static void main(String[] args) {
         Runtime r = Runtime.getRuntime();
         //String comando = "CMD /C DIR"; // Para Windows
-        String comando = "ls -al"; // Para Linux
+        String comando = "java Ejemplo2"; // Para Linux
         Process p = null;
         try {
             p = r.exec(comando);

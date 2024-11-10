@@ -1,7 +1,7 @@
 import java.io.*;
 
 /*
- * Clase Ejemplo2 para listar utilizando el comando ls -al ya que se realiza desde Linux
+ * Clase Ejemplo2 para listar utilizando el comando ls -al ya que se realiza desde Linux.
  */
 public class Ejemplo2 {
     public static void main(String[] args) {
