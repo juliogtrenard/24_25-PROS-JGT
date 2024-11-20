@@ -1,5 +1,9 @@
 import java.net.*;
 
+/**
+ * Clase principal del programa.
+ * Obtiene todas las direcciones del sitio web Spotify y las muestra por consola.
+ */
 public class Actividad1 {
     public static void main(String[] args) {
         try {

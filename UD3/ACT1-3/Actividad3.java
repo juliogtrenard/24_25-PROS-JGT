@@ -1,5 +1,11 @@
 import java.net.*;
 
+/**
+ * Clase principal del programa.
+ * Obtiene todas las direcciones del sitio web pasado como argumento y las muestra por consola.
+ * En caso de que se pase un sitio web incorrecto, se muestra un mensaje de error.
+ * En caso de no pasar ningun argumento, se muestran las direcciones IP locales.
+ */
 public class Actividad3 {
     public static void main(String[] args) {
         try {
