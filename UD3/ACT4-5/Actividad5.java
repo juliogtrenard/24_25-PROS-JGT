@@ -3,6 +3,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+/*
+ * Clase que muestra la información de una conexión HTTP
+ */
 public class Actividad5 {
 
     public static void main(String[] args) {

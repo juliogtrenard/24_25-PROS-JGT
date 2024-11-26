@@ -1,6 +1,9 @@
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/*
+ * Clase que muestra la información de un URI
+ */
 public class Actividad4 {
 
     public static void main(String[] args) {
